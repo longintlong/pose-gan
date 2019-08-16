@@ -1,12 +1,12 @@
 from conditional_gan import make_generator, make_discriminator, CGAN
-import cmd
+import cmdd
 from gan.train import Trainer
 
 from pose_dataset import PoseHMDataset
 
 
 def main():
-    args = cmd.args()
+    args = cmdd.args()
 
     generator = make_generator(args.image_size, args.use_input_pose, args.warp_skip, args.disc_type, args.warp_agg,
                                args.use_bg, args.pose_rep_type)

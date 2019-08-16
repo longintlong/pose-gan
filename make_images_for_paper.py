@@ -1,6 +1,6 @@
 from skimage.io import imread, imsave
 import pose_utils
-from cmd import args
+from cmdd import args
 import os
 import re
 import pandas as pd

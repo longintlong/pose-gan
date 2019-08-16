@@ -1,6 +1,6 @@
 from compute_coordinates import cordinates_from_image_file
 from create_pairs_dataset import filter_not_valid
-import cmd
+import cmdd
 import os
 from shutil import copy, rmtree
 import pandas as pd
@@ -14,7 +14,7 @@ from skimage.transform import resize
 import numpy as np
 
 if __name__ == "__main__":
-    args = cmd.args()
+    args = cmdd.args()
 
     dataset = 'tmp'
 

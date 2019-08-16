@@ -393,7 +393,7 @@ if __name__ == "__main__":
     img_folder = 'data/tmp-dataset/test'
     f = open('lolkek.txt', 'w')
     for _, row in pairs_df.iterrows():
-        print 1
+        print(1)
         fr = 'denis_pjump000004.jpg'# row['from']
         to = 'denis_pjump000004.jpg'#row['to']
         fr_img = imread(os.path.join(img_folder, fr))

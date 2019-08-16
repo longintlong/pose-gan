@@ -1,11 +1,11 @@
 from keras.models import Model, Input, Sequential
 from keras.layers import Flatten, Concatenate, Activation, Dropout, Dense
 from keras.layers.convolutional import Conv2D, Conv2DTranspose, ZeroPadding2D, Cropping2D
-from keras_contrib.layers.normalization import InstanceNormalization
+from keras_contrib.layers.normalization.instancenormalization import InstanceNormalization
 from keras.layers.advanced_activations import LeakyReLU
 import keras.backend as K
 from keras.backend import tf as ktf
-
+import keras
 from gan.gan import GAN
 from gan.layer_utils import content_features_model
 
@@ -138,9 +138,12 @@ def make_generator(image_size, use_input_pose, warp_skip, disc_type, warp_agg, u
     out = decoder(enc_layers[::-1], nfilters_decoder)
 
     warp_in_disc = [] if disc_type != 'warp' else warp
-
+    outputs = [input_img] + input_pose + [out, output_pose] + bg_img + warp_in_disc
+    # return Model(inputs=[input_img] + input_pose + [output_img, output_pose] + bg_img + warp,
+    #              outputs=[input_img] + input_pose + [out, output_pose] + bg_img + warp_in_disc)
     return Model(inputs=[input_img] + input_pose + [output_img, output_pose] + bg_img + warp,
-                 outputs=[input_img] + input_pose + [out, output_pose] + bg_img + warp_in_disc)
+                 outputs=[keras.layers.Lambda(lambda x: ktf.identity(x))(out) for out in outputs]
+                 )
 
 
 def make_discriminator(image_size, use_input_pose, warp_skip, disc_type, warp_agg, use_bg, pose_rep_type):

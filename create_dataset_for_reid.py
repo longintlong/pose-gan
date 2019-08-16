@@ -1,5 +1,5 @@
 from conditional_gan import make_generator
-import cmd
+import cmdd
 from pose_dataset import PoseHMDataset
 
 import numpy as np
@@ -83,7 +83,7 @@ def create_train_file(generated_images_folder, train_file_name, generated_as_sep
     train_f.close()
 
 def test():
-    args = cmd.args()
+    args = cmdd.args()
 
     args.images_dir_test = args.images_dir_train
     args.pairs_file_test = 'data/market-re-id-pairs.csv'

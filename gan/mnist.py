@@ -6,7 +6,7 @@ from keras.layers.advanced_activations import LeakyReLU
 
 from lsgan import LSGAN
 from dataset import ArrayDataset
-from cmd import parser_with_default_args
+from cmdd import parser_with_default_args
 from train import Trainer
 
 import numpy as np

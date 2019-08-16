@@ -10,7 +10,7 @@ from skimage.io import imread
 from skimage.transform import resize
 from scipy.ndimage import gaussian_filter
 
-from cmd import args
+from cmdd import args
 
 mapIdx = [[31,32], [39,40], [33,34], [35,36], [41,42], [43,44], [19,20], [21,22],
           [23,24], [25,26], [27,28], [29,30], [47,48], [49,50], [53,54], [51,52],
