@@ -37,9 +37,11 @@ def save_images(input_images, target_images, generated_images, names, output_fol
     if not os.path.exists(output_folder):
         os.makedirs(output_folder)
     for images in zip(input_images, target_images, generated_images, names):
-        res_name = str('_'.join(images[-1])) + '.png'
+        res_name = str('___'.join(images[-1])) + '_vis.png'
         imsave(os.path.join(output_folder, res_name), np.concatenate(images[:-1], axis=1))
 
+# fasionMENJacketsVestsid0000016802_1front.jpg___fasionMENJacketsVestsid0000016802_2side.jpg_vis.png
+# fasionMENTeesTanksid0000216306_3back.jpg_fasionMENTeesTanksid0000216306_2side.jpg.png
 
 def create_masked_image(names, images, annotation_file):
     import pose_utils
